@@ -2,8 +2,12 @@ import { useState } from "react";
 import { POEMS } from "../data/poems";
 import PoemSidebar from "../components/PoemSidebar";
 import PoemCard from "../components/PoemCard";
+import { useNavigate } from "react-router-dom";
 
-export default function PoemsPage({ onNavigate }) {
+export default function PoemsPage() {
+
+const navigate = useNavigate();
+
   const [filters, setFilters] = useState({});
 
   const toggleFilter = (type, value) =>
@@ -28,7 +32,7 @@ export default function PoemsPage({ onNavigate }) {
 
         <button
           className="pm-back-btn"
-          onClick={() => onNavigate("home")}
+          onClick={() => navigate("/home")}
           aria-label="Back to home"
         >
           ← Home

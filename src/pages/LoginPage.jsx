@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { ALLOWED_USERS, ALLOWED_PASS } from "../data/poems";
+import { useNavigate } from "react-router-dom";
+export default function LoginPage() {
+  const navigate = useNavigate();
 
-export default function LoginPage({ onSuccess }) {
   const [form, setForm] = useState({
     username: "", password: "", phone: "",
     bday: "", gender: "", reason: "Friends", comment: "",
@@ -17,7 +19,7 @@ export default function LoginPage({ onSuccess }) {
     if (!ALLOWED_USERS.includes(form.username)) errs.username = "Username is Invalid";
     if (!ALLOWED_PASS.includes(form.password))  errs.password = "Password is Invalid";
     if (Object.keys(errs).length) { setErrors(errs); return; }
-    onSuccess();
+    navigate("/home"); 
   };
 
   return (

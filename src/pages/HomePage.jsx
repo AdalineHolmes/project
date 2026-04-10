@@ -1,8 +1,10 @@
 import { useRef } from "react";
 import useParallax from "../hooks/useParallax";
 import { PARALLAX_LAYERS, NAV_ITEMS } from "../data/poems";
+import { useNavigate } from "react-router-dom";
 
-export default function HomePage({ onNavigate }) {
+export default function HomePage() {
+  const navigate = useNavigate();
   const bannerRef = useRef(null);
   useParallax(bannerRef);
 
@@ -36,7 +38,7 @@ export default function HomePage({ onNavigate }) {
             <button
               key={label}
               className="h-nav-btn"
-              onClick={() => page && onNavigate(page)}
+              onClick={() => page && navigate("/"+page)}
               aria-current={!page ? "page" : undefined}
             >
               {label}
